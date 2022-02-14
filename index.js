@@ -3,8 +3,8 @@ import request from 'request/index';
 import Promise from 'Promise/index';
 
 const DATA = new PVObject('cygsweightmod', {
-	apiKey: 'Not Set',
-	username: 'Not Set',
+	apiKey: 'Not set',
+	username: 'Not set',
 })
 
 function setKey(key){
@@ -31,10 +31,18 @@ function sendRequest(url) {
 	});
 }
 
+TriggerRegister.registerWorldLoad(function(){
+	if (DATA.apiKey === undefined || DATA.apiKey === 'Not set'){
+		ChatLib.chat('§3=======================================================');
+		ChatLib.chat(ChatLib.getCenteredText('§e§lRemember to set your hypixel API key with /setkey [key]'));
+		ChatLib.chat('§3=======================================================');
+	}
+})
+
 //weight
 TriggerRegister.registerCommand(function(name){
 	if (name === undefined){
-		if (DATA.username === undefined || DATA.username === 'Not Set'){
+		if (DATA.username === undefined || DATA.username === 'Not set'){
 			ChatLib.chat('Specify a name with /weight {name}')
 			return;
 		}
@@ -110,7 +118,7 @@ TriggerRegister.registerCommand(function(name){
 
 TriggerRegister.registerCommand(function(){
 
-	DATA.username = 'Not Set'
+	DATA.username = 'Not set'
 	ChatLib.chat('Name removed!');
 	
 }).setName("delname")
