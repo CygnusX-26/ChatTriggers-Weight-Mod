@@ -1,0 +1,7 @@
+{
+    "name": "CygsWeightModule",
+    "creator": "CygnusX26",
+    "description": "Calculates Player Weight for Hypixel Skyblock",
+    "entry": "index.js",
+    "requires": ["PromiseV2", "requestV2", "PersistentData"]
+  }
