@@ -42,6 +42,7 @@ TriggerRegister.registerCommand(function(name){
 			name = DATA.username;
 		}
 	}
+	new Message("§b§oLoading...").setChatLineId(5050).chat();
 	sendRequest(
 		'https://api.mojang.com/users/profiles/minecraft/' + name)
 		.then(player => {
@@ -50,7 +51,8 @@ TriggerRegister.registerCommand(function(name){
 				'https://hypixel-skyblock-facade.cygnusx.repl.co/v1/profiles/' + uuid + '/weight?key=' + getKey(),
 			)
 			.then(response => {
-				ChatLib.chat('§6<§e§lWeight for ' + name + '§6>')
+				ChatLib.clearChat(5050);
+				ChatLib.chat(ChatLib.getCenteredText('§6<§e§lWeight for ' + name + '§6>'))
 				ChatLib.chat('§6Total Weight: §f' + Math.round(+response['data']['weight'] + +response['data']['weight_overflow']))
 				ChatLib.chat('§6Weight: §f' + Math.round(+response['data']['weight']) + ' (+' + Math.round(response['data']['weight_overflow']) + '§e Overflow§f)')
 				ChatLib.chat('§6Skills: §f' + Math.round(+response['data']['skills']['weight']) + ' (+' + Math.round(response['data']['skills']['weight_overflow']) + '§e Overflow§f)')
