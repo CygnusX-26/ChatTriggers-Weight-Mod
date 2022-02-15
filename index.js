@@ -7,9 +7,6 @@ const DATA = new PVObject('cygsweightmod', {
 	username: 'Not set',
 })
 
-function setKey(key){
-	DATA.apiKey = key;
-}
 function getKey(){
 	return DATA.apiKey;
 }
@@ -31,8 +28,16 @@ function sendRequest(url) {
 	});
 }
 
+// var gui = new Gui();
+
+// function render(){
+// 	Renderer.drawRect(Renderer.GRAY, 50, 50, 535, 250);
+// 	Renderer.drawRect(Renderer.BLACK, 60, 60, 515, 230);
+// }
+
+//reminder
 TriggerRegister.registerWorldLoad(function(){
-	if (DATA.apiKey === undefined || DATA.apiKey === 'Not set'){
+	if (DATA.apiKey === undefined || DATA.apiKey === 'Not set'){E
 		ChatLib.chat('§3=======================================================');
 		ChatLib.chat(ChatLib.getCenteredText('§e§lRemember to set your hypixel API key with /setkey [key]'));
 		ChatLib.chat('§3=======================================================');
@@ -84,42 +89,34 @@ TriggerRegister.registerCommand(function(key){
 		ChatLib.chat('error, no key provided');
 	}
 	else{
-		setKey(key);
+		DATA.apiKey = key;
 		ChatLib.chat('Success!')
 	}
 }).setName("setkey")
 
 TriggerRegister.registerCommand(function(){
-
-	ChatLib.chat(getKey());
-
+	// gui.registerDraw(render);
+	// gui.open();
+	ChatLib.chat(DATA.apiKey);
 }).setName("getkey")
 
 TriggerRegister.registerCommand(function(){
-
 	ChatLib.chat('Key removed');
 	DATA.apiKey = 'Not set'
-
 }).setName("delkey")
 
 //names
 TriggerRegister.registerCommand(function(){
-
 	ChatLib.chat(DATA.username);
-
 }).setName("getname")
 
 TriggerRegister.registerCommand(function(name){
-
 	setName(name);
 	ChatLib.chat('Set your username to ' + name);
-	
 }).setName("setname")
 
 TriggerRegister.registerCommand(function(){
-
 	DATA.username = 'Not set'
 	ChatLib.chat('Name removed!');
-	
 }).setName("delname")
 
