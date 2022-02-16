@@ -37,7 +37,7 @@ function sendRequest(url) {
 
 //reminder
 TriggerRegister.registerWorldLoad(function(){
-	if (DATA.apiKey === undefined || DATA.apiKey === 'Not set'){E
+	if (DATA.apiKey === undefined || DATA.apiKey === 'Not set'){
 		ChatLib.chat('§3=======================================================');
 		ChatLib.chat(ChatLib.getCenteredText('§e§lRemember to set your hypixel API key with /setkey [key]'));
 		ChatLib.chat('§3=======================================================');
